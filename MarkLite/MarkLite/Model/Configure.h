@@ -44,6 +44,8 @@
 
 @property (nonatomic,strong) Item *currentItem;
 
+@property (nonatomic, assign) BOOL touchid;
+
 + (instancetype)sharedConfigure;
 
 - (BOOL)saveToFile;

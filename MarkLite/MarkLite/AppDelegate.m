@@ -12,9 +12,11 @@
 #import "Item.h"
 #import "HomeViewController.h"
 #import <Bugly/Bugly.h>
+#import "TouchIdViewController.h"
+#import "Configure.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong) UIWindow *touchidWindow;
 @end
 
 static BOOL allowRotation = NO;
@@ -52,7 +54,8 @@ static BOOL allowRotation = NO;
     });
     
     [Bugly startWithAppId:@"5fc2a78226"];
-
+    
+    [self setupTouchIdWindow];
     return YES;
 }
 
@@ -111,6 +114,7 @@ static BOOL allowRotation = NO;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self hiddenTouchIdWindow:(NO & [Configure sharedConfigure].touchid)];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -188,6 +192,30 @@ static BOOL allowRotation = NO;
 + (void)setAllowRotation:(BOOL)allow
 {
     allowRotation = allow;
+}
+
+- (void)setupTouchIdWindow {
+    self.touchidWindow = [[UIWindow alloc] initWithFrame:self.window.bounds];
+    
+    TouchIdViewController *touchidVC = [[TouchIdViewController alloc] init];
+    touchidVC.touchId = [Configure sharedConfigure].touchid;
+    touchidVC.authenticationBlock = ^(BOOL susseed){
+
+        [self hiddenTouchIdWindow:susseed];
+    };
+    self.touchidWindow.rootViewController = touchidVC;
+    [self hiddenTouchIdWindow:![Configure sharedConfigure].touchid];
+}
+
+- (void)hiddenTouchIdWindow:(BOOL)hidden {
+    if (hidden) {
+        self.touchidWindow.windowLevel = UIWindowLevelNormal;
+        [self.window makeKeyAndVisible];
+
+    } else {
+        [self.touchidWindow makeKeyAndVisible];
+        self.touchidWindow.windowLevel = UIWindowLevelAlert;
+    }
 }
 
 @end

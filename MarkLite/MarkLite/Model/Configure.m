@@ -58,6 +58,8 @@
     [aCoder encodeFloat:self.fontSize forKey:@"fontSize"];
     [aCoder encodeInteger:self.useTimes forKey:@"useTimes"];
     [aCoder encodeObject:self.currentItem forKey:@"currentItem"];
+    [aCoder encodeBool:self.touchid forKey:@"touchid"];
+
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -79,6 +81,7 @@
         _currentVerion = [aDecoder decodeObjectForKey:@"currentVerion"];
         _useTimes = [aDecoder decodeIntegerForKey:@"useTimes"];
         _currentItem = [aDecoder decodeObjectForKey:@"currentItem"];
+        _touchid = [aDecoder decodeBoolForKey:@"touchid"];
     }
     return self;
 }

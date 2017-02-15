@@ -76,7 +76,8 @@
 		07EC143F1D1ED3DF00AA3EEE /* ZHRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC143E1D1ED3DF00AA3EEE /* ZHRequest.m */; };
 		07F90CEC1D20F67900DF5194 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F90CEA1D20F67900DF5194 /* ImageViewController.m */; };
 		07F90CED1D20F67900DF5194 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F90CEB1D20F67900DF5194 /* ImageViewController.xib */; };
-		07F90CEF1D20F89900DF5194 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F90CEE1D20F89900DF5194 /* StoreKit.framework */; };
+		86C878E31E53FA3F004B03FB /* TouchIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C878E11E53FA3F004B03FB /* TouchIdViewController.m */; };
+		86C878E41E53FA3F004B03FB /* TouchIdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C878E21E53FA3F004B03FB /* TouchIdViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -220,7 +221,9 @@
 		07F90CE91D20F67900DF5194 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		07F90CEA1D20F67900DF5194 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		07F90CEB1D20F67900DF5194 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
-		07F90CEE1D20F89900DF5194 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		86C878E01E53FA3F004B03FB /* TouchIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchIdViewController.h; sourceTree = "<group>"; };
+		86C878E11E53FA3F004B03FB /* TouchIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIdViewController.m; sourceTree = "<group>"; };
+		86C878E21E53FA3F004B03FB /* TouchIdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TouchIdViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +235,6 @@
 				07D8705E1E14FB16002FBCBE /* Security.framework in Frameworks */,
 				07D8705B1E14FAD7002FBCBE /* Bugly.framework in Frameworks */,
 				07B92EFB1D1D98D500A4127E /* libz.tbd in Frameworks */,
-				07F90CEF1D20F89900DF5194 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				07D8705A1E14FAD7002FBCBE /* Bugly.framework */,
-				07F90CEE1D20F89900DF5194 /* StoreKit.framework */,
 				07B92EFA1D1D98D500A4127E /* libz.tbd */,
 				07B92DCC1D1D960F00A4127E /* MarkLite */,
 				07B92DCB1D1D960F00A4127E /* Products */,
@@ -322,6 +323,7 @@
 		07B92DE41D1D964100A4127E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				86C878DF1E53FA2C004B03FB /* TouchId */,
 				0777D3391D2524A30026E0EA /* Root */,
 				07CFA5C71D2CF50F00F7DDDA /* Main */,
 				0777D3331D2522B80026E0EA /* Menu */,
@@ -515,6 +517,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		86C878DF1E53FA2C004B03FB /* TouchId */ = {
+			isa = PBXGroup;
+			children = (
+				86C878E01E53FA3F004B03FB /* TouchIdViewController.h */,
+				86C878E11E53FA3F004B03FB /* TouchIdViewController.m */,
+				86C878E21E53FA3F004B03FB /* TouchIdViewController.xib */,
+			);
+			path = TouchId;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -547,12 +559,12 @@
 				TargetAttributes = {
 					07B92DC91D1D960F00A4127E = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = HX6HU45L64;
+						DevelopmentTeam = H3Q93CC4TX;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -595,6 +607,7 @@
 				07F90CED1D20F67900DF5194 /* ImageViewController.xib in Resources */,
 				07CFA4091D2B7A6E00F7DDDA /* Localizable.strings in Resources */,
 				07580B461DE5FCE80048D728 /* MenuViewController.xib in Resources */,
+				86C878E41E53FA3F004B03FB /* TouchIdViewController.xib in Resources */,
 				07B92DDA1D1D960F00A4127E /* Assets.xcassets in Resources */,
 				07B92E991D1D966B00A4127E /* icon.png in Resources */,
 				07D9D1F51D238C6300725A94 /* ImageUploadingView.xib in Resources */,
@@ -623,6 +636,7 @@
 				07B92ED01D1D966B00A4127E /* KeyboardBar.m in Sources */,
 				07580B3A1DE5D0350048D728 /* ItemTableViewCell.m in Sources */,
 				07BB7AC71D37F39C0034BDDC /* AFHTTPSessionManager.m in Sources */,
+				86C878E31E53FA3F004B03FB /* TouchIdViewController.m in Sources */,
 				07F90CEC1D20F67900DF5194 /* ImageViewController.m in Sources */,
 				078FFD5C1E34694900DD724A /* FontViewController.m in Sources */,
 				07BB7ACC1D37F39C0034BDDC /* AFURLResponseSerialization.m in Sources */,
@@ -803,7 +817,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H3Q93CC4TX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MarkLite/ThirdLib",
@@ -816,7 +830,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhubch.MarkLite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hihfy.MarkLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -835,7 +849,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H3Q93CC4TX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MarkLite/ThirdLib",
@@ -848,7 +862,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhubch.MarkLite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hihfy.MarkLite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

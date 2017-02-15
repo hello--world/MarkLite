@@ -12,6 +12,7 @@
 #import "SeparatorLine.h"
 #import <StoreKit/StoreKit.h>
 #import "FontViewController.h"
+//#import <LocalAuthentication/LocalAuthentication.h>
 
 @interface MenuViewController ()<SKPaymentTransactionObserver,SKProductsRequestDelegate>
 @property(nonatomic,weak) IBOutlet UITableView *tableView;
@@ -28,7 +29,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     
-    items = @[@"AssistKeyboard",@"UseLocalImage",@"Font",@"RateIt",@"Feedback",@"Donate"];
+    items = @[@"AssistKeyboard",@"UseLocalImage",@"TouchId",@"Font",@"RateIt",@"Feedback",@"Donate"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -99,7 +100,16 @@
         s.on = [Configure sharedConfigure].useLocalImage;
         [s addTarget:self action:@selector(switchLocalImage:) forControlEvents:UIControlEventValueChanged];
         [cell addSubview:s];
-    } else{
+    } else if ([title isEqualToString:@"TouchId"]) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@""];
+        UISwitch *s = [[UISwitch alloc]initWithFrame:CGRectMake(self.view.bounds.size.width - 60, 7, 0, 0)];
+        s.tintColor = kPrimaryColor;
+        s.onTintColor = kPrimaryColor;
+        s.on = [Configure sharedConfigure].touchid;
+        [s addTarget:self action:@selector(touchid:) forControlEvents:UIControlEventValueChanged];
+        [cell addSubview:s];
+    }
+    else{
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];
     }
 
@@ -129,7 +139,8 @@
                           @"Font":@"font",
                           @"RateIt":@"rate",
                           @"Feedback":@"feedback",
-                          @"Donate":@"donate"};
+                          @"Donate":@"donate",
+                          };
     NSString *key = items[indexPath.row];
     
     if ([dic[key] length] > 0) {
@@ -176,6 +187,12 @@
     NSString *url = @"mailto:cheng4741@gmail.com?subject=MarkLite%20Report&body=";
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
 }
+
+- (void)touchid:(UISwitch *)s {
+    s.on = s.isOn;
+    [Configure sharedConfigure].touchid = s.on;
+}
+
 
 //请求商品
 - (void)requestProductData:(NSString *)type{
