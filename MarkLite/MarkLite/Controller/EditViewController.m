@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (assign, nonatomic) BOOL split;
 
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation EditViewController
@@ -78,12 +79,19 @@
     }
 
     self.split = NO;
+    
+    self.timer = [NSTimer timerWithTimeInterval:3 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [weakSelf saveFile];
+    }];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self.editView resignFirstResponder];
     [self showRateAlert];
+//    [self saveFile];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
