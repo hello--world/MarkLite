@@ -51,7 +51,7 @@ static BOOL allowRotation = NO;
         }
     });
     
-    [Bugly startWithAppId:@"900059643"];
+    [Bugly startWithAppId:@"5fc2a78226"];
 
     return YES;
 }
