@@ -8,6 +8,7 @@
 
 #import "Configure.h"
 #import "FileManager.h"
+#import <LocalAuthentication/LocalAuthentication.h>
 
 #define RGB(x) [UIColor colorWithRGBString:x]
 @implementation Configure
@@ -91,6 +92,18 @@
     if (self = [super init]) {
     }
     return self;
+}
+- (BOOL)touchid {
+    LAContext *context = [[LAContext alloc] init];
+    NSError *error;
+
+    if (![context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error])
+    {
+        NSLog(@"error:%@", error);
+//        NSString *msg = [NSString stringWithFormat:@"Can't evaluate policy! %@", error.localizedDescription];
+        return NO;
+    }
+    return _touchid;
 }
 
 - (void)reset

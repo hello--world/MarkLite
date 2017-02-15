@@ -114,7 +114,9 @@ static BOOL allowRotation = NO;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [self hiddenTouchIdWindow:(NO & [Configure sharedConfigure].touchid)];
+    if ([Configure sharedConfigure].touchid) {
+        [self hiddenTouchIdWindow:NO];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
